@@ -1,17 +1,18 @@
+
 import os
 import cv2
 
 
 class ImageRotate(object):
     def __init__(self, image):
-        # Load the image into OpenCV.
+        # Load the image into OpenCV and converts it into a numpy array.
         self.image_name = image.split("/")[-1]
         self.image = cv2.imread(image, 1)
         # Creates a folder for manipulated pictures.
         if not os.path.exists("Results/"):
             os.mkdir("Results")
 
-            
+
     def rotation(self):
         # Resize the image.
         self.image = cv2.resize(self.image, (0, 0), fx=.5, fy=.5)
@@ -24,7 +25,7 @@ class ImageRotate(object):
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-        
+
 if __name__ == "__main__":
     img = input(r"Enter path to picture  >> ")
     image = ImageRotate(img).rotation()
