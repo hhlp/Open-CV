@@ -1,7 +1,7 @@
 
 import os
 import cv2
-
+import random
 
 class ImageRotate(object):
     def __init__(self, image):
@@ -25,7 +25,23 @@ class ImageRotate(object):
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
+    def scramble(self):
+        for i in range(100):
+            for j in range(self.image.shape[1]):
+                self.image[i][j] = [random.randrange(255), random.randrange(255), random.randrange(255)]
+        self.show_image()
+
+
+    def slice(self):
+        cut = self.image[500:700, 600:900]
+        self.image[100:300, 650:950] = cut
+        self.show_image()
+
+    def show_image(self):
+        cv2.imshow("Image", self.image)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
 if __name__ == "__main__":
     img = input(r"Enter path to picture  >> ")
-    image = ImageRotate(img).rotation()
+    image = ImageRotate(img).slice()
