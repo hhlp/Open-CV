@@ -15,6 +15,10 @@ class ImageRotate(object):
         if not os.path.exists("Results/"):
             os.mkdir("Results")
 
+    def save_image(self):
+        # Save the image to the Results folder.
+        cv2.imwrite(f"Results/{self.image_name}_{self.timestamp}", self.image)
+        
     def show_image(self):
         # Shows the image until a key is pressed.
         cv2.imshow("Manipulated Image", self.image)
@@ -26,8 +30,6 @@ class ImageRotate(object):
         self.image = cv2.resize(self.image, (0, 0), fx=.5, fy=.5)
         # Rotates the image.
         self.image = cv2.rotate(self.image, cv2.cv2.ROTATE_90_CLOCKWISE)
-        # Save the image to the Results folder.
-        cv2.imwrite(f"Results/{self.image_name}_{self.timestamp}", self.image)
         self.show_image()
 
     def scramble(self):
@@ -38,7 +40,6 @@ class ImageRotate(object):
                 self.image[i][j] = [random.randrange(255),
                                     random.randrange(255),
                                     random.randrange(255)]
-        cv2.imwrite(f"Results/{self.image_name}_{self.timestamp}", self.image)
         self.show_image()
 
     def slice(self):
@@ -46,7 +47,6 @@ class ImageRotate(object):
         cut = self.image[500:700, 600:900]
         # Replaces pixels with the copied pixels
         self.image[100:300, 650:950] = cut
-        cv2.imwrite(f"Results/{self.image_name}_{self.timestamp}", self.image)
         self.show_image()
 
 if __name__ == "__main__":
