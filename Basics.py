@@ -18,7 +18,7 @@ class ImageRotate(object):
     def save_image(self):
         # Save the image to the Results folder.
         cv2.imwrite(f"Results/{self.image_name}_{self.timestamp}", self.image)
-        
+
     def show_image(self):
         # Shows the image until a key is pressed.
         cv2.imshow("Manipulated Image", self.image)
@@ -50,6 +50,7 @@ class ImageRotate(object):
         self.show_image()
 
 if __name__ == "__main__":
-    img = input(r"Enter path to picture  >> ")
+    # img = input(r"Enter path to picture  >> ")
+    img = "image.jpg"
     image = ImageRotate(img)
     image.slice()
