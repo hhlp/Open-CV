@@ -4,10 +4,10 @@ import random
 import datetime
 
 
-class ImageRotate(object):
+class Basics(object):
     def __init__(self, image):
-        # Load the image into OpenCV and converts it into a numpy array.
         self.image_name = image.split("/")[-1]
+        # Load the image into OpenCV and converts it into a numpy array.
         self.image = cv2.imread(image, 1)
         # Timestamp for image_name
         self.timestamp = datetime.datetime.now().strftime("%d%m%H%M%S")
@@ -52,5 +52,5 @@ class ImageRotate(object):
 if __name__ == "__main__":
     # img = input(r"Enter path to picture  >> ")
     img = "image.jpg"
-    image = ImageRotate(img)
+    image = Basics(img)
     image.slice()
